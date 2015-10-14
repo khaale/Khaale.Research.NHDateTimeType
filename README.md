@@ -12,3 +12,19 @@ Poor DateTimeType performance seems to be caused by
 					date1.Minute == date2.Minute &&
 					date1.Second == date2.Second);
 ```
+
+Benchmark results
+
+```ini
+BenchmarkDotNet=v0.7.8.0
+OS=Microsoft Windows NT 6.2.9200.0
+Processor=Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz, ProcessorCount=4
+HostCLR=MS.NET 4.0.30319.34209, Arch=32-bit
+Type=DateTimeTypesBenchmark  Mode=Throughput  Platform=HostPlatform  Jit=HostJit  .NET=HostFramework
+```
+
+                     Method |     AvrTime |    StdDev |          op/s |
+--------------------------- |------------ |---------- |-------------- |
+ CustomDateTimeType_IsEqual |  46.9243 ns | 0.3065 ns | 21,310,917.78 |
+       DateTimeType_IsEqual | 281.2075 ns | 1.4330 ns |  3,556,096.26 |
+      TimestampType_IsEqual |  20.2574 ns | 0.1129 ns | 49,364,775.15 |
